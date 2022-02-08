@@ -1,18 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { NoticesService } from './services/notices.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'pokemon-ui';
-  notices$ = this.notificationService.getNotices();
-
-  constructor(private notificationService: NoticesService) {}
-
-  ngOnInit() {
-    this.notices$.subscribe((notices) => console.log(notices));
-  }
 }

@@ -11,9 +11,10 @@ import {
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { XhrInterceptor } from './interceptors/app.request.interceptor';
+import { NoticesComponent } from './notices/notices.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, NoticesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

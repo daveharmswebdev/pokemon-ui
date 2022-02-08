@@ -45,7 +45,7 @@ export class XhrInterceptor implements HttpInterceptor {
             if (err.status !== 401) {
               return;
             }
-            this.router.navigate(['dashboard']);
+            console.log('ugh!!!');
           }
         }
       )

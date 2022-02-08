@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Trainer } from '../model/Trainer';
-import { LoginService } from '../login.service';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
     password: '',
   });
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) {}
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -24,14 +29,20 @@ export class LoginComponent implements OnInit {
     trainer.password = this.loginForm.get('password')?.value;
     console.log(trainer, this.loginForm.value);
 
-    this.loginService.login(trainer).subscribe((response) => {
-      const model = <any>response.body;
-      model.authStatus = 'AUTH';
-      window.sessionStorage.setItem('userdetails', JSON.stringify(model));
-      let xsrf = this.getCookie('XSRF-TOKEN');
-      window.sessionStorage.setItem('XSRF-TOKEN', xsrf);
-      console.log('looks good');
-    });
+    this.loginService.login(trainer).subscribe(
+      (response) => {
+        const model = <any>response.body;
+        model.authStatus = 'AUTH';
+        window.sessionStorage.setItem('userdetails', JSON.stringify(model));
+        let xsrf = this.getCookie('XSRF-TOKEN');
+        window.sessionStorage.setItem('XSRF-TOKEN', xsrf);
+        console.log('looks good');
+        this.router.navigate(['/notices']);
+      },
+      (error) => {
+        console.log('something went wrong', error);
+      }
+    );
   }
 
   getCookie(name: any) {
