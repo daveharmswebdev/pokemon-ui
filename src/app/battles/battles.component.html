@@ -1,0 +1,12 @@
+<p>battles works!</p>
+
+<div *ngIf="battles$ | async as battles">
+
+  <mat-card *ngFor="let battle of battles">
+    <mat-card-header>
+      <div>{{ battle.id }} : {{ battle.name}}</div>
+    </mat-card-header>
+    <mat-card-content>{{ battle.location }}</mat-card-content>
+  </mat-card>
+</div>
+

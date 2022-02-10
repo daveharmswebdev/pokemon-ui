@@ -1,0 +1,11 @@
+<script src="../services/notices.service.ts"></script>
+<script src="../app.module.ts"></script><p>pokemon works!</p>
+
+
+<div *ngIf="pokemon$ | async as pokemon">
+  <div *ngFor="let p of pokemon">
+    <div>{{ p.id }}</div>
+    <div>{{ p.name }}</div>
+    <div>{{ p.hitPoints }}</div>
+  </div>
+</div>

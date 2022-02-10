@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { INotice } from '../model/INotice';
 
 @Injectable({
   providedIn: 'root',
 })
-export class NoticesService {
+export class PokemonService {
   constructor(private http: HttpClient) {}
 
-  getNotices() {
-    return this.http.get<INotice[]>('http://localhost:8080/api/v1/notices');
+  getPokemon() {
+    return this.http.get('http://localhost:8080/api/v1/pokemon');
   }
 }

@@ -31,13 +31,15 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(trainer).subscribe(
       (response) => {
+        window.sessionStorage.setItem(
+          'Authorization',
+          <string>response.headers.get('Authorization')
+        );
         const model = <any>response.body;
         model.authStatus = 'AUTH';
         window.sessionStorage.setItem('userdetails', JSON.stringify(model));
-        let xsrf = this.getCookie('XSRF-TOKEN');
-        window.sessionStorage.setItem('XSRF-TOKEN', xsrf);
         console.log('looks good');
-        this.router.navigate(['/notices']);
+        this.router.navigate(['/pokemon']);
       },
       (error) => {
         console.log('something went wrong', error);
