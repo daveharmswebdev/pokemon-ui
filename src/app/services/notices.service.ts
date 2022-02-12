@@ -9,6 +9,6 @@ export class NoticesService {
   constructor(private http: HttpClient) {}
 
   getNotices() {
-    return this.http.get<INotice[]>('http://localhost:8080/api/v1/notices');
+    return this.http.get<INotice[]>('http://localhost:8081/api/v1/notices');
   }
 }

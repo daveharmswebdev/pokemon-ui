@@ -8,6 +8,6 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
 
   getPokemon() {
-    return this.http.get('http://localhost:8080/api/v1/pokemon');
+    return this.http.get('http://localhost:8081/api/v1/pokemon');
   }
 }

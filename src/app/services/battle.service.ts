@@ -10,6 +10,6 @@ export class BattleService {
   constructor(private http: HttpClient) {}
 
   getBattles(): Observable<IBattle[]> {
-    return this.http.get<IBattle[]>('http://localhost:8080/api/v1/battle');
+    return this.http.get<IBattle[]>('http://localhost:8081/api/v1/battle');
   }
 }
